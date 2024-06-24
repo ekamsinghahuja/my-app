@@ -1,9 +1,11 @@
 import React from "react";
+import './app.css'
+import Maincontainer from "./components/Maincontainer";
 
 function App() {
   return (
-    <div>
-      APP
+    <div className="App">
+      <Maincontainer/>
     </div>
   );
 }
