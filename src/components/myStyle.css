@@ -190,9 +190,18 @@
 .other-message-con-name{
     color: rgb(226, 19, 19);
 }
-.chatArea-container{
+.welcom-container{
     border-color: aliceblue;
     flex:0.7;
     display: flex;
     flex-direction: column;
+    justify-content: center;
+    gap:20px;
+    font-family: "Segoe UI", Geneva, Tahoma, sans-serif;
+    border-bottom:5px solid #63d7b0;
+    border-radius: 20px;
+    align-items: center;
+}
+.welcom-logo{
+    width: 30%;
 }
