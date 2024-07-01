@@ -8,18 +8,21 @@ import Welcom from './Welcom';
 import CreateGroup from './CreateGroup';
 import Useer_Groups from './Useer_Groups';
 import A_use_grp from './A_use_grp';
+import { BrowserRouter,Routes,Route } from 'react-router-dom';
+import { Outlet } from 'react-router-dom';
+
 const Maincontainer = () => {
 
-  const [chat,setchat] = useState({name:"Title1",lastMessage:"last message1",timeStamp:"today"})
+  
   return (
     <div className='main-container'>
+      
         <Sidebar/>
         {/* <Welcom/> */}
         {/* <ChatArea props={chat}/> */}
         {/* <CreateGroup/> */}
-        <A_use_grp/>
-
-       
+        {/* <A_use_grp/> */}
+        <Outlet /> {/* This is where the nested routes will be rendered */}
     </div>
   )
 }

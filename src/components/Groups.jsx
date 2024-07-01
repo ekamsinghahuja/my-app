@@ -3,8 +3,7 @@ import logo from "../Assets/logoo-removebg-preview.png"
 import SearchIcon from '@mui/icons-material/Search';
 import { IconButton } from '@mui/material';
 
-
-const A_use_grp = () => {
+const Groups = () => {
   return (
     <div className='list-container'>
         <div className='ug-header'>
@@ -108,4 +107,4 @@ const A_use_grp = () => {
   )
 }
 
-export default A_use_grp
+export default Groups

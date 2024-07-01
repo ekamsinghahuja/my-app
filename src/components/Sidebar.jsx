@@ -7,6 +7,7 @@ import NightlightIcon from '@mui/icons-material/Nightlight';
 import SearchIcon from '@mui/icons-material/Search';
 import { IconButton } from '@mui/material';
 import ConversationItem from './ConversationItem';
+import { useNavigate } from 'react-router-dom';
 
 const Sidebar = () => {
     const [conversations, setConversation] = useState([
@@ -14,6 +15,7 @@ const Sidebar = () => {
         {name:"Title2",lastMessage:"last message2",timeStamp:"today t2"},
         {name:"Title3",lastMessage:"last message3",timeStamp:"today t3"}
     ]);
+    const navigate = useNavigate();
     
   return (
     <div className='sidebar-container'>
@@ -22,9 +24,15 @@ const Sidebar = () => {
                 <IconButton> <AccountCircleIcon/></IconButton>
             </div>
             <div>
-            <IconButton> <PersonAddIcon/></IconButton>
-            <IconButton> <GroupAddIcon/></IconButton>
-            <IconButton> <AddCircleIcon/></IconButton>
+            <IconButton onClick={()=>{
+                navigate("users")
+            }}> <PersonAddIcon/></IconButton>
+            <IconButton onClick={()=>{
+                navigate("groups")
+            }}> <GroupAddIcon/></IconButton>
+            <IconButton onClick={()=>{
+                navigate("create_group")
+            }}> <AddCircleIcon/></IconButton>
             <IconButton> <NightlightIcon/></IconButton>
             </div>
             
@@ -36,9 +44,11 @@ const Sidebar = () => {
         </div>
         <div className='sb-conversations'>
             {conversations.map((conversation)=>{
-                return <ConversationItem props ={conversation} key={conversation.name}/>
+                return (<ConversationItem 
+                props ={conversation} 
+                key={conversation.name}
+                />);
             })}
-            
         </div>
     </div>
   )
