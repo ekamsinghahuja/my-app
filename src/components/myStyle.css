@@ -7,7 +7,6 @@
     
 }
 .sidebar-container{
-    
     flex:0.3;
     display: flex;
     flex-direction: column;
@@ -15,7 +14,6 @@
 .workarea-container{
     border-color: aliceblue;
     flex:0.7;
-
 }
 .chatArea-container{
     border-color: aliceblue;
@@ -24,6 +22,7 @@
     flex-direction: column;
 }
 .sb-header{
+    box-shadow: rgba(0, 0, 0, 0.25) 0px 54px 55px, rgba(0, 0, 0, 0.12) 0px -12px 30px, rgba(0, 0, 0, 0.12) 0px 4px 6px, rgba(0, 0, 0, 0.17) 0px 12px 13px, rgba(0, 0, 0, 0.09) 0px -3px 5px;
     background-color: white;
     border-radius: 20px;
     padding: 10px 5px;
@@ -32,6 +31,7 @@
     justify-content: space-between;
 }
 .sb-search{
+    box-shadow: rgba(0, 0, 0, 0.25) 0px 54px 55px, rgba(0, 0, 0, 0.12) 0px -12px 30px, rgba(0, 0, 0, 0.12) 0px 4px 6px, rgba(0, 0, 0, 0.17) 0px 12px 13px, rgba(0, 0, 0, 0.09) 0px -3px 5px;
     background-color: white;
     border-radius: 20px;
     padding: 10px 10px;
@@ -47,6 +47,8 @@
     margin-left: 10px;
 }
 .sb-conversations{
+    
+    box-shadow: rgba(0, 0, 0, 0.25) 0px 54px 55px, rgba(0, 0, 0, 0.12) 0px -12px 30px, rgba(0, 0, 0, 0.12) 0px 4px 6px, rgba(0, 0, 0, 0.17) 0px 12px 13px, rgba(0, 0, 0, 0.09) 0px -3px 5px;
     background-color: white;
     border-radius: 20px;
     padding: 10px 5px;
@@ -106,6 +108,7 @@
 }
 
 .chatArea-header{
+    box-shadow: rgba(0, 0, 0, 0.25) 0px 54px 55px, rgba(0, 0, 0, 0.12) 0px -12px 30px, rgba(0, 0, 0, 0.12) 0px 4px 6px, rgba(0, 0, 0, 0.17) 0px 12px 13px, rgba(0, 0, 0, 0.09) 0px -3px 5px;
     display: flex;
     align-items: center;
     gap: 10px;
@@ -132,7 +135,7 @@
 }
 
 .message-container{
-    
+    box-shadow: rgba(0, 0, 0, 0.25) 0px 54px 55px, rgba(0, 0, 0, 0.12) 0px -12px 30px, rgba(0, 0, 0, 0.12) 0px 4px 6px, rgba(0, 0, 0, 0.17) 0px 12px 13px, rgba(0, 0, 0, 0.09) 0px -3px 5px;
     background-color: white;
     flex:1;
     padding: 10px 10px;
@@ -141,6 +144,7 @@
     overflow: scroll;
 }
 .text-input-area{
+    box-shadow: rgba(0, 0, 0, 0.25) 0px 54px 55px, rgba(0, 0, 0, 0.12) 0px -12px 30px, rgba(0, 0, 0, 0.12) 0px 4px 6px, rgba(0, 0, 0, 0.17) 0px 12px 13px, rgba(0, 0, 0, 0.09) 0px -3px 5px;
     background-color: white;
     padding: 10px 10px;
     margin: 10px;
@@ -167,6 +171,7 @@
     font-size: 0.75rem;
     font-weight: lighter;
 }
+
 
 .other-message-container{
     display: flex;
@@ -204,4 +209,58 @@
 }
 .welcom-logo{
     width: 30%;
+}
+
+.createGroup-container{
+    flex:0.7;
+    align-self: center;
+    padding: 20px 10px;
+    margin:10px;
+    background-color: white;
+    border-radius: 20px;
+    display: flex;
+    justify-content: space-between;
+}
+
+.login-container{
+    
+    height: 90vh;
+    width: 90vw;
+    background-color: #f4f5f8;
+    border-radius: 20px;
+    display: flex;
+    box-shadow: rgba(50, 50, 93, 0.25) 0px 6px 12px -2px, rgba(0, 0, 0, 0.3) 0px 3px 7px -3px;
+}
+.image-container{
+
+    flex:0.3;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+
+}
+.login-box{
+    
+    flex:0.7;
+    background-color: white;
+    border-radius: 20px;
+    margin:10px;
+    font-family: "Segoe UI", Geneva, Tahoma, sans-serif;
+    color: #21aa6c;
+    font-weight: bolder;
+    display:flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    gap: 15px;
+    font-size: 2vw;
+}
+.list-container{
+    flex:0.7;
+    display: flex;
+    flex-direction: column;
+}
+.ug-header{
+    background-color: white;
+    border-radius: 20px;
 }

@@ -5,15 +5,21 @@ import Sidebar from './Sidebar'
 import AccountCircleIcon from '@mui/icons-material/AccountCircle';
 import ChatArea from './ChatArea';
 import Welcom from './Welcom';
+import CreateGroup from './CreateGroup';
+import Useer_Groups from './Useer_Groups';
+import A_use_grp from './A_use_grp';
 const Maincontainer = () => {
 
   const [chat,setchat] = useState({name:"Title1",lastMessage:"last message1",timeStamp:"today"})
   return (
     <div className='main-container'>
         <Sidebar/>
-        {/* <Workarea/> */}
+        {/* <Welcom/> */}
         {/* <ChatArea props={chat}/> */}
-        <Welcom/>
+        {/* <CreateGroup/> */}
+        <A_use_grp/>
+
+       
     </div>
   )
 }
