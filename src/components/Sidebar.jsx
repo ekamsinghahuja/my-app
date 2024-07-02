@@ -8,6 +8,7 @@ import SearchIcon from '@mui/icons-material/Search';
 import { IconButton } from '@mui/material';
 import ConversationItem from './ConversationItem';
 import { useNavigate } from 'react-router-dom';
+import LightModeIcon from '@mui/icons-material/LightMode';
 
 const Sidebar = () => {
     const [conversations, setConversation] = useState([
@@ -15,38 +16,42 @@ const Sidebar = () => {
         {name:"Title2",lastMessage:"last message2",timeStamp:"today t2"},
         {name:"Title3",lastMessage:"last message3",timeStamp:"today t3"}
     ]);
+    const [theme, changeTheme] = useState(true);
     const navigate = useNavigate();
     
   return (
     <div className='sidebar-container'>
-        <div className='sb-header'>
+        <div className={'sb-header ' + ((theme)?"":'dark')} >
             <div>
-                <IconButton> <AccountCircleIcon/></IconButton>
+                <IconButton> <AccountCircleIcon className={((theme)?"":'dark')} /></IconButton>
             </div>
             <div>
             <IconButton onClick={()=>{
                 navigate("users")
-            }}> <PersonAddIcon/></IconButton>
+            }}> <PersonAddIcon className={((theme)?"":'dark')}/></IconButton>
             <IconButton onClick={()=>{
                 navigate("groups")
-            }}> <GroupAddIcon/></IconButton>
+            }}> <GroupAddIcon className={((theme)?"":'dark')}/></IconButton>
             <IconButton onClick={()=>{
                 navigate("create_group")
-            }}> <AddCircleIcon/></IconButton>
-            <IconButton> <NightlightIcon/></IconButton>
+            }}> <AddCircleIcon className={((theme)?"":'dark')}/></IconButton>
+            <IconButton onClick={() => changeTheme(prev => !prev)}>
+                {theme ? <NightlightIcon /> : <LightModeIcon className={((theme)?"":'dark')}/>}
+            </IconButton>
             </div>
             
             
         </div>
-        <div className='sb-search'>
-            <SearchIcon />
-            <input placeholder='Search' className='searchbox'/>
+        <div className={'sb-search ' + ((theme)?"":'dark')}>
+            <SearchIcon className={((theme)?"":'dark')} />
+            <input placeholder='Search' className={'searchbox ' + ((theme)?"":'dark')}/>
         </div>
-        <div className='sb-conversations'>
+        <div className={'sb-conversations ' + ((theme)?"":'dark')}>
             {conversations.map((conversation)=>{
                 return (<ConversationItem 
                 props ={conversation} 
                 key={conversation.name}
+                className={((theme)?"":'dark')}
                 />);
             })}
         </div>

@@ -1,3 +1,7 @@
+.dark{
+    background-color: #2d3941 !important;
+    color: whitesmoke !important;
+}
 .main-container{
     background-color: #f4f5f8;
     height: 90vh;
