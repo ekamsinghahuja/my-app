@@ -11,6 +11,7 @@ import { useNavigate } from 'react-router-dom';
 import LightModeIcon from '@mui/icons-material/LightMode';
 
 const Sidebar = () => {
+    
     const [conversations, setConversation] = useState([
         {name:"Title1",lastMessage:"last message1",timeStamp:"today"},
         {name:"Title2",lastMessage:"last message2",timeStamp:"today t2"},
