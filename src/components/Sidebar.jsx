@@ -27,25 +27,25 @@ const Sidebar = () => {
   return (
     <div className='sidebar-container'>
         <div className={'sb-header ' + ((theme)?"":'dark')} >
+            
             <div>
                 <IconButton> <AccountCircleIcon className={((theme)?"":'dark')} /></IconButton>
             </div>
             <div>
-            <IconButton onClick={()=>{
-                navigate("users")
-            }}> <PersonAddIcon className={((theme)?"":'dark')}/></IconButton>
-            <IconButton onClick={()=>{
-                navigate("groups")
-            }}> <GroupAddIcon className={((theme)?"":'dark')}/></IconButton>
-            <IconButton onClick={()=>{
-                navigate("create_group")
-            }}> <AddCircleIcon className={((theme)?"":'dark')}/></IconButton>
-            <IconButton onClick={() =>{dispatch(toggleTheme())}}>
-                {theme ? <NightlightIcon /> : <LightModeIcon className={((theme)?"":'dark')}/>}
-            </IconButton>
+                <IconButton onClick={()=>{
+                    navigate("users")
+                }}> <PersonAddIcon className={((theme)?"":'dark')}/></IconButton>
+                <IconButton onClick={()=>{
+                    navigate("groups")
+                }}> <GroupAddIcon className={((theme)?"":'dark')}/></IconButton>
+                <IconButton onClick={()=>{
+                    navigate("create_group")
+                }}> <AddCircleIcon className={((theme)?"":'dark')}/></IconButton>
+                <IconButton onClick={() =>{dispatch(toggleTheme())}}>
+                    {theme ? <NightlightIcon /> : <LightModeIcon className={((theme)?"":'dark')}/>}
+                </IconButton>
             </div>
-            
-            
+           
         </div>
         <div className={'sb-search ' + ((theme)?"":'dark')}>
             <SearchIcon className={((theme)?"":'dark')} />

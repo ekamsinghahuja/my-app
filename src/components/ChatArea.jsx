@@ -5,25 +5,28 @@ import React, { useState } from 'react'
 import MessageOthers from './MessageOthers';
 import MessageSelf from './MessageSelf';
 import { useNavigate } from 'react-router-dom';
+import { useDispatch, useSelector } from 'react-redux';
+import { toggleTheme } from '../freatures/themeSlice';
 
 
 const ChatArea = () => {
+  const theme = useSelector((state)=>state.themeKey);
   const [chat,setchat] = useState({name:"Title1",lastMessage:"last message1",timeStamp:"today"})
 
   
   return (
     <div className='chatArea-container'>
-      <div className='chatArea-header'>
-        <p className="con-icon">{chat.name[0]}</p>
-        <div className='header-text'>
-            <p className='con-title'>{chat.name}</p>
-            <p className='con-timeStamp2'>{chat.timeStamp}</p>
+      <div className={'chatArea-header '+((theme)?"":'dark')}>
+        <p className={"con-icon " + ((theme)?"":'dark')}>{chat.name[0]}</p>
+        <div className={'header-text ' + ((theme)?"":'dark')}>
+            <p className={'con-title ' +((theme)?"":'dark')}>{chat.name}</p>
+            <p className={'con-timeStamp2 '+((theme)?"":'dark')}>{chat.timeStamp}</p>
         </div>
-        <IconButton>
+        <IconButton className={((theme)?"":'dark')}>
             <DeleteIcon/>
         </IconButton>
       </div>
-      <div className='message-container'>
+      <div className={'message-container ' + ((theme)?"":'dark')}>
         <MessageOthers/>
         <MessageSelf/>
         <MessageOthers/>
