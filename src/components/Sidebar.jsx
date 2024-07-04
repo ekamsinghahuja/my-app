@@ -9,16 +9,20 @@ import { IconButton } from '@mui/material';
 import ConversationItem from './ConversationItem';
 import { useNavigate } from 'react-router-dom';
 import LightModeIcon from '@mui/icons-material/LightMode';
+import { useDispatch, useSelector } from 'react-redux';
+import { toggleTheme } from '../freatures/themeSlice';
 
 const Sidebar = () => {
-    
+
     const [conversations, setConversation] = useState([
         {name:"Title1",lastMessage:"last message1",timeStamp:"today"},
         {name:"Title2",lastMessage:"last message2",timeStamp:"today t2"},
         {name:"Title3",lastMessage:"last message3",timeStamp:"today t3"}
     ]);
-    const [theme, changeTheme] = useState(true);
+    const theme = useSelector((state)=>state.themeKey);
     const navigate = useNavigate();
+    const dispatch = useDispatch();
+
     
   return (
     <div className='sidebar-container'>
@@ -36,7 +40,7 @@ const Sidebar = () => {
             <IconButton onClick={()=>{
                 navigate("create_group")
             }}> <AddCircleIcon className={((theme)?"":'dark')}/></IconButton>
-            <IconButton onClick={() => changeTheme(prev => !prev)}>
+            <IconButton onClick={() =>{dispatch(toggleTheme())}}>
                 {theme ? <NightlightIcon /> : <LightModeIcon className={((theme)?"":'dark')}/>}
             </IconButton>
             </div>
