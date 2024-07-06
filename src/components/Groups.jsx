@@ -3,11 +3,23 @@ import logo from "../Assets/logoo-removebg-preview.png"
 import SearchIcon from '@mui/icons-material/Search';
 import { IconButton } from '@mui/material';
 import { useSelector } from 'react-redux';
+import { motion } from "framer-motion"
+import { AnimatePresence } from "framer-motion"
 
 const Groups = () => {
     const theme = useSelector((state)=>state.themeKey);
   return (
-    <div className='list-container'>
+    <AnimatePresence>
+    <motion.div
+     initial={{ opacity: 0, scale: 0 }}
+     animate={{ opacity: 1, scale: 1 }}
+     exit={{ opacity: 0, scale: 0 }}
+     transition={{
+         ease: "anticipate",
+         duration: 0.3
+     }}
+
+     className='list-container'>
         <div className={'ug-header '+((theme)?"":'dark')}>
             <img 
             src={logo}
@@ -20,88 +32,38 @@ const Groups = () => {
             <input placeholder='Search' className={'searchbox ' + ((theme)?"":'dark')}/>
         </div>
         <div className={'ug-list ' }>
-            <div className={'list-tem ' + ((theme)?"":'dark')}>
+            <motion.div whileHover={{scale:1.03}} whileTap={{scale:0.98}} className={'list-tem ' + ((theme)?"":'dark')}>
                 <p className={'con-icon '+ ((theme)?"":'dark')}>T</p>
                 <p className={'con-title '+ ((theme)?"":'dark')}>Test-User</p>
-            </div>
-            <div className={'list-tem ' + ((theme)?"":'dark')}>
+            </motion.div>
+            <motion.div whileHover={{scale:1.03}} whileTap={{scale:0.98}} className={'list-tem ' + ((theme)?"":'dark')}>
                 <p className={'con-icon '+ ((theme)?"":'dark')}>T</p>
                 <p className={'con-title '+ ((theme)?"":'dark')}>Test-User</p>
-            </div>
-            <div className={'list-tem ' + ((theme)?"":'dark')}>
+            </motion.div>
+            <motion.div whileHover={{scale:1.03}} whileTap={{scale:0.98}} className={'list-tem ' + ((theme)?"":'dark')}>
                 <p className={'con-icon '+ ((theme)?"":'dark')}>T</p>
                 <p className={'con-title '+ ((theme)?"":'dark')}>Test-User</p>
-            </div>
-            <div className={'list-tem ' + ((theme)?"":'dark')}>
+            </motion.div>
+            <motion.div whileHover={{scale:1.03}} whileTap={{scale:0.98}} className={'list-tem ' + ((theme)?"":'dark')}>
                 <p className={'con-icon '+ ((theme)?"":'dark')}>T</p>
                 <p className={'con-title '+ ((theme)?"":'dark')}>Test-User</p>
-            </div>
-            <div className={'list-tem ' + ((theme)?"":'dark')}>
+            </motion.div>
+            <motion.div whileHover={{scale:1.03}} whileTap={{scale:0.98}} className={'list-tem ' + ((theme)?"":'dark')}>
                 <p className={'con-icon '+ ((theme)?"":'dark')}>T</p>
                 <p className={'con-title '+ ((theme)?"":'dark')}>Test-User</p>
-            </div>
-            <div className={'list-tem ' + ((theme)?"":'dark')}>
+            </motion.div>
+            <motion.div whileHover={{scale:1.03}} whileTap={{scale:0.98}} className={'list-tem ' + ((theme)?"":'dark')}>
                 <p className={'con-icon '+ ((theme)?"":'dark')}>T</p>
                 <p className={'con-title '+ ((theme)?"":'dark')}>Test-User</p>
-            </div>
-            <div className={'list-tem ' + ((theme)?"":'dark')}>
+            </motion.div>
+            <motion.div whileHover={{scale:1.03}} whileTap={{scale:0.98}} className={'list-tem ' + ((theme)?"":'dark')}>
                 <p className={'con-icon '+ ((theme)?"":'dark')}>T</p>
                 <p className={'con-title '+ ((theme)?"":'dark')}>Test-User</p>
-            </div>
-            <div className={'list-tem ' + ((theme)?"":'dark')}>
-                <p className={'con-icon '+ ((theme)?"":'dark')}>T</p>
-                <p className={'con-title '+ ((theme)?"":'dark')}>Test-User</p>
-            </div>
-            <div className={'list-tem ' + ((theme)?"":'dark')}>
-                <p className={'con-icon '+ ((theme)?"":'dark')}>T</p>
-                <p className={'con-title '+ ((theme)?"":'dark')}>Test-User</p>
-            </div>
-            <div className={'list-tem ' + ((theme)?"":'dark')}>
-                <p className={'con-icon '+ ((theme)?"":'dark')}>T</p>
-                <p className={'con-title '+ ((theme)?"":'dark')}>Test-User</p>
-            </div>
-            <div className={'list-tem ' + ((theme)?"":'dark')}>
-                <p className={'con-icon '+ ((theme)?"":'dark')}>T</p>
-                <p className={'con-title '+ ((theme)?"":'dark')}>Test-User</p>
-            </div>
-            <div className={'list-tem ' + ((theme)?"":'dark')}>
-                <p className={'con-icon '+ ((theme)?"":'dark')}>T</p>
-                <p className={'con-title '+ ((theme)?"":'dark')}>Test-User</p>
-            </div>
-            <div className={'list-tem ' + ((theme)?"":'dark')}>
-                <p className={'con-icon '+ ((theme)?"":'dark')}>T</p>
-                <p className={'con-title '+ ((theme)?"":'dark')}>Test-User</p>
-            </div>
-            <div className={'list-tem ' + ((theme)?"":'dark')}>
-                <p className={'con-icon '+ ((theme)?"":'dark')}>T</p>
-                <p className={'con-title '+ ((theme)?"":'dark')}>Test-User</p>
-            </div>
-            <div className={'list-tem ' + ((theme)?"":'dark')}>
-                <p className={'con-icon '+ ((theme)?"":'dark')}>T</p>
-                <p className={'con-title '+ ((theme)?"":'dark')}>Test-User</p>
-            </div>
-            <div className={'list-tem ' + ((theme)?"":'dark')}>
-                <p className={'con-icon '+ ((theme)?"":'dark')}>T</p>
-                <p className={'con-title '+ ((theme)?"":'dark')}>Test-User</p>
-            </div>
-            <div className={'list-tem ' + ((theme)?"":'dark')}>
-                <p className={'con-icon '+ ((theme)?"":'dark')}>T</p>
-                <p className={'con-title '+ ((theme)?"":'dark')}>Test-User</p>
-            </div>
-            <div className={'list-tem ' + ((theme)?"":'dark')}>
-                <p className={'con-icon '+ ((theme)?"":'dark')}>T</p>
-                <p className={'con-title '+ ((theme)?"":'dark')}>Test-User</p>
-            </div>
-            <div className={'list-tem ' + ((theme)?"":'dark')}>
-                <p className={'con-icon '+ ((theme)?"":'dark')}>T</p>
-                <p className={'con-title '+ ((theme)?"":'dark')}>Test-User</p>
-            </div>
-            <div className={'list-tem ' + ((theme)?"":'dark')}>
-                <p className={'con-icon '+ ((theme)?"":'dark')}>T</p>
-                <p className={'con-title '+ ((theme)?"":'dark')}>Test-User</p>
-            </div>
+            </motion.div>
+            
         </div>
-    </div>
+    </motion.div>
+    </AnimatePresence>
   )
 }
 
