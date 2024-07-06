@@ -307,6 +307,14 @@
     transition-duration: 0.1s;
    
 }
+.vertical-flex{
+    display: flex;
+    flex-direction: column;
+    width: 100%;
+    gap: 5px;
+    max-width: 400px;
+    width: 400px;
+}
 
 
 
