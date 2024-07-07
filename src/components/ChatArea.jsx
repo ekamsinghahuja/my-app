@@ -53,8 +53,8 @@ const ChatArea = () => {
         <MessageOthers/>
         <MessageSelf/>
         </div>
-      <div className='text-input-area'>
-        <input type="text" placeholder='Type a Message' className='searchbox'/>
+      <div className={'text-input-area '+((theme)?"":'dark')}>
+        <input type="text" placeholder='Type a Message' className={'searchbox '+((theme)?"":'dark')}/>
         <IconButton>
             <SendIcon/>
         </IconButton>

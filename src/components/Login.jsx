@@ -34,19 +34,28 @@ const Auth = () => {
         { email: data.email, password: data.password },
         config
       );
-      console.log(response);
-      setStatusMessage("Login successful");
-      navigate('/app/welcome');
-      localStorage.setItem("userData", JSON.stringify(response.data));
-      setLoading(false);
+      console.log(response.data.success);
+      if(response.data.success){
+        setStatusMessage("Login successful");
+        navigate('/app/welcome');
+        localStorage.setItem("userData", JSON.stringify(response.data));
+        setLoading(false);
+      }
+      else{
+        console.log(response.data);
+        setStatusMessage(response.data.message);
+        setLoading(false);
+      }
+     
     } catch (err) {
-      console.error(err);  // Log the error
-      setStatusMessage("Invalid email or password");
+      console.error(err); 
+      setStatusMessage("Something Went Wrong");
       setLoading(false);
     }
   };
 
   const signUpHandler = async () => {
+   
     setLoading(true);
     try {
       const config = {
@@ -59,13 +68,20 @@ const Auth = () => {
         data,
         config
       );
-      console.log(response);
-      setStatusMessage("Registration successful");
-      navigate('/app/welcome');
-      localStorage.setItem("userData", JSON.stringify(response.data));
+      if(response.data.success){
+        console.log(response);
+        setStatusMessage("Registration successful");
+        navigate('/app/welcome');
+        localStorage.setItem("userData", JSON.stringify(response.data));
+      }
+      else{
+        console.log(response.data);
+        setStatusMessage(response.data.message);
+        setLoading(false);
+      }
       setLoading(false);
     } catch (error) {
-      console.error(error);  // Log the error
+      console.error(error);  
       setStatusMessage("Registration failed");
       setLoading(false);
     }
@@ -132,7 +148,7 @@ const Auth = () => {
           <Button variant="text" onClick={toggleForm}>
             {isLogin ? "Don't have an account? Sign Up" : 'Already have an account? Login'}
           </Button>
-          {statusMessage && <p>{statusMessage}</p>}
+          {statusMessage && <p className='error-login'>*{statusMessage}</p>}
         </div>
       </div>
     </>

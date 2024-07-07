@@ -1,6 +1,22 @@
 .dark{
     background-color: #2d3941 !important;
+    color: rgba(245, 245, 245, 0.649) !important;
+}
+.darker{
+    background-color: #0a1115 !important;
     color: whitesmoke !important;
+    /* color: whitesmoke !important; */
+}
+.darkeres{
+    background: linear-gradient(135deg, #0a1115, #1c1f23, #33363a) !important;
+}
+.messageBoxDark{
+    background-color: #054113 !important;
+
+}
+.messageOtherBoxDark{
+    background-color: #1f2721 !important;
+
 }
 .main-container{
     background-color: #f4f5f8;
@@ -11,22 +27,25 @@
     
 }
 .sidebar-container{
+    
     flex:0.3;
     display: flex;
     flex-direction: column;
 }
 .workarea-container{
+    box-shadow: rgba(99, 99, 99, 0.2) 0px 2px 8px 0px;
     border-color: aliceblue;
     flex:0.7;
 }
 .chatArea-container{
+    
     border-color: aliceblue;
     flex:0.7;
     display: flex;
     flex-direction: column;
 }
 .sb-header{
-    box-shadow: rgba(0, 0, 0, 0.25) 0px 54px 55px, rgba(0, 0, 0, 0.12) 0px -12px 30px, rgba(0, 0, 0, 0.12) 0px 4px 6px, rgba(0, 0, 0, 0.17) 0px 12px 13px, rgba(0, 0, 0, 0.09) 0px -3px 5px;
+    box-shadow: rgba(99, 99, 99, 0.2) 0px 2px 8px 0px;
     background-color: white;
     border-radius: 20px;
     padding: 10px 5px;
@@ -35,7 +54,8 @@
     justify-content: space-between;
 }
 .sb-search{
-    box-shadow: rgba(0, 0, 0, 0.25) 0px 54px 55px, rgba(0, 0, 0, 0.12) 0px -12px 30px, rgba(0, 0, 0, 0.12) 0px 4px 6px, rgba(0, 0, 0, 0.17) 0px 12px 13px, rgba(0, 0, 0, 0.09) 0px -3px 5px;
+    box-shadow: rgba(99, 99, 99, 0.2) 0px 2px 8px 0px;
+   
     background-color: white;
     border-radius: 20px;
     padding: 10px 10px;
@@ -45,6 +65,7 @@
 
 }
 .searchbox{
+    
     outline-width: 0px;
     border: none;
     font-size: 1.25rem;
@@ -52,8 +73,8 @@
     flex: 0.7;
 }
 .sb-conversations{
-    
-    box-shadow: rgba(0, 0, 0, 0.25) 0px 54px 55px, rgba(0, 0, 0, 0.12) 0px -12px 30px, rgba(0, 0, 0, 0.12) 0px 4px 6px, rgba(0, 0, 0, 0.17) 0px 12px 13px, rgba(0, 0, 0, 0.09) 0px -3px 5px;
+    box-shadow: rgba(99, 99, 99, 0.2) 0px 2px 8px 0px;
+   
     background-color: white;
     border-radius: 20px;
     padding: 10px 5px;
@@ -62,6 +83,7 @@
 
 }
 .conversation-container{
+    
     display:grid;
     grid-template-columns: 32px auto auto;
     grid-template-rows: auto auto;
@@ -71,16 +93,18 @@
     border-radius: 20px;
 }
 .conversation-container:hover{
+    
     background-color: #d9d9d9;
 }
 
 .con-icon {
-    grid-area: 1 / 1 / 3 / 2;
+    box-shadow: rgba(99, 99, 99, 0.2) 0px 2px 8px 0px;
     display: flex;
     justify-content: center;
+    grid-area: 1 / 1 / 3 / 2;
     align-items: center;
     background-color: #d9d9d9;
-    font-size: 2rem;
+    font-size: 1.5rem; 
     font-family: "Segoe UI", Geneva, Tahoma, sans-serif;
     font-weight: bolder;
     color: white;
@@ -93,6 +117,7 @@
 }
 
 .con-title {
+    
     grid-area: 1 / 2 / 2 / 4;
     font-family: "Segoe UI", Geneva, Tahoma, sans-serif;
     font-weight: bold;
@@ -100,6 +125,7 @@
 }
 
 .con-lastMessage {
+
     grid-area: 2 / 2 / 3 / 3;
     justify-self: start;
     font-family: "Segoe UI", Geneva, Tahoma, sans-serif;
@@ -117,7 +143,7 @@
 }
 
 .chatArea-header{
-    box-shadow: rgba(0, 0, 0, 0.25) 0px 54px 55px, rgba(0, 0, 0, 0.12) 0px -12px 30px, rgba(0, 0, 0, 0.12) 0px 4px 6px, rgba(0, 0, 0, 0.17) 0px 12px 13px, rgba(0, 0, 0, 0.09) 0px -3px 5px;
+    box-shadow: rgba(99, 99, 99, 0.2) 0px 2px 8px 0px;
     display: flex;
     align-items: center;
     gap: 10px;
@@ -127,6 +153,7 @@
     border-radius: 20px;
 }
 .header-text{
+    
     display: flex;
     flex-direction: column;
     justify-content: center;
@@ -144,7 +171,7 @@
 }
 
 .message-container{
-    box-shadow: rgba(0, 0, 0, 0.25) 0px 54px 55px, rgba(0, 0, 0, 0.12) 0px -12px 30px, rgba(0, 0, 0, 0.12) 0px 4px 6px, rgba(0, 0, 0, 0.17) 0px 12px 13px, rgba(0, 0, 0, 0.09) 0px -3px 5px;
+    box-shadow: rgba(99, 99, 99, 0.2) 0px 2px 8px 0px;
     background-color: white;
     flex:1;
     padding: 10px 10px;
@@ -153,7 +180,7 @@
     overflow: scroll;
 }
 .text-input-area{
-    box-shadow: rgba(0, 0, 0, 0.25) 0px 54px 55px, rgba(0, 0, 0, 0.12) 0px -12px 30px, rgba(0, 0, 0, 0.12) 0px 4px 6px, rgba(0, 0, 0, 0.17) 0px 12px 13px, rgba(0, 0, 0, 0.09) 0px -3px 5px;
+    box-shadow: rgba(99, 99, 99, 0.2) 0px 2px 8px 0px;
     background-color: white;
     padding: 10px 10px;
     margin: 10px;
@@ -162,10 +189,12 @@
     justify-content: space-between;
 }
 .self-message-container{
+    
     display: flex;
     justify-content: flex-end;
 }
 .messageBox{
+    box-shadow: rgba(99, 99, 99, 0.2) 0px 2px 8px 0px;
     display: flex;
     flex-direction: column;
     background-color: #63d7b0;
@@ -183,15 +212,18 @@
 
 
 .other-message-container{
+    
     display: flex;
     justify-content: flex-start;
 
 }
 .other-message-box{
+    
     display: flex;
     flex-direction: row;
 }
 .other-text-content{
+    box-shadow: rgba(99, 99, 99, 0.2) 0px 2px 8px 0px;
     display: flex;
     flex-direction: column;
     background-color: #d9d9d9;
@@ -202,9 +234,11 @@
     font-family: "Segoe UI", Geneva, Tahoma, sans-serif;
 }
 .other-message-con-name{
+    
     color: rgb(226, 19, 19);
 }
 .welcom-container{
+    box-shadow: rgba(99, 99, 99, 0.2) 0px 2px 8px 0px;
     border-color: aliceblue;
     flex:0.7;
     display: flex;
@@ -217,10 +251,12 @@
     align-items: center;
 }
 .welcom-logo{
+    
     width: 30%;
 }
 
 .createGroup-container{
+    box-shadow: rgba(99, 99, 99, 0.2) 0px 2px 8px 0px;
     flex:0.7;
     align-self: center;
     padding: 20px 10px;
@@ -231,6 +267,7 @@
     justify-content: space-between;
 }
 .createGroup-input-container{
+    
     display: flex;
     justify-content: space-between;
     align-items: center; 
@@ -242,7 +279,7 @@
     background-color: #f4f5f8;
     border-radius: 20px;
     display: flex;
-    box-shadow: rgba(50, 50, 93, 0.25) 0px 6px 12px -2px, rgba(0, 0, 0, 0.3) 0px 3px 7px -3px;
+    
 }
 .image-container{
 
@@ -253,7 +290,7 @@
 
 }
 .login-box{
-    
+    box-shadow: rgba(99, 99, 99, 0.2) 0px 2px 8px 0px;
     flex:0.7;
     background-color: white;
     border-radius: 20px;
@@ -274,21 +311,24 @@
     flex-direction: column;
 }
 .ug-header{
+    box-shadow: rgba(99, 99, 99, 0.2) 0px 2px 8px 0px;
     background-color: white;
     border-radius: 20px;
     padding: 12px 5px;
     margin: 10px;
     display: flex;
     align-items: center;
-    box-shadow: rgba(0, 0, 0, 0.25) 0px 54px 55px, rgba(0, 0, 0, 0.12) 0px -12px 30px, rgba(0, 0, 0, 0.12) 0px 4px 6px, rgba(0, 0, 0, 0.17) 0px 12px 13px, rgba(0, 0, 0, 0.09) 0px -3px 5px;
+    
 }
 .ug-title{
+    
     color: rgba(0,0,0,0.54);
     margin-left:10px;
     font-family: "Segoe UI", Geneva, Tahoma, sans-serif;
     font-weight: bolder;
 }
 .ug-list{
+    
     flex:1;
     overflow:scroll;
     scrollbar-width: none;
@@ -298,6 +338,7 @@
     display: none;
 }
 .list-tem{
+    box-shadow: rgba(99, 99, 99, 0.2) 0px 2px 8px 0px;
     display: flex;
     align-items: center;
     background-color: white;
@@ -315,7 +356,11 @@
     max-width: 400px;
     width: 400px;
 }
+.error-login{
+    font-size: 15px;
+    color: red;
 
+}
 
 
 
@@ -351,3 +396,133 @@
     
 
 }
+
+
+
+
+
+
+
+
+
+.clr1 {
+    background-color: rgb(101, 8, 8); /* dark red */
+}
+
+.clr2 {
+    background-color: rgb(20, 142, 20); /* green */
+}
+
+.clr3 {
+    background-color: #00f; /* blue */
+}
+
+.clr4 {
+    background-color: rgb(165, 165, 7); /* yellow */
+}
+
+.clr5 {
+    background-color: #0ff; /* cyan */
+}
+
+.clr6 {
+    background-color: #f0f; /* magenta */
+}
+
+.clr7 {
+    background-color: #888; /* grey */
+}
+
+.clr8 {
+    background-color: rgb(77, 15, 105); /* dark purple */
+}
+
+.clr9 {
+    background-color: rgb(173, 48, 48); /* crimson */
+}
+
+.clr10 {
+    background-color: rgb(0, 128, 128); /* teal */
+}
+
+.clr11 {
+    background-color: rgb(0, 153, 0); /* dark green */
+}
+
+.clr12 {
+    background-color: rgb(255, 153, 0); /* orange */
+}
+
+.clr13 {
+    background-color: rgb(51, 51, 255); /* royal blue */
+}
+
+.clr14 {
+    background-color: rgb(255, 0, 255); /* fuchsia */
+}
+
+.clr15 {
+    background-color: rgb(255, 102, 102); /* light coral */
+}
+
+.clr16 {
+    background-color: rgb(153, 204, 255); /* light blue */
+}
+
+.clr17 {
+    background-color: rgb(0, 204, 153); /* sea green */
+}
+
+.clr18 {
+    background-color: rgb(204, 0, 204); /* violet */
+}
+
+.clr19 {
+    background-color: rgb(255, 102, 0); /* dark orange */
+}
+
+.clr20 {
+    background-color: rgb(255, 204, 204); /* light pink */
+}
+
+.clr21 {
+    background-color: rgb(128, 128, 0); /* olive */
+}
+
+.clr22 {
+    background-color: rgb(102, 102, 0); /* dark olive */
+}
+
+.clr23 {
+    background-color: rgb(255, 153, 153); /* light salmon */
+}
+
+.clr24 {
+    background-color: rgb(0, 255, 204); /* turquoise */
+}
+
+.clr25 {
+    background-color: rgb(204, 102, 255); /* lavender */
+}
+
+.clr26 {
+    background-color: rgb(204, 255, 204); /* pale green */
+}
+
+.clr27 {
+    background-color: rgb(0, 102, 204); /* deep sky blue */
+}
+
+.clr28 {
+    background-color: rgb(255, 204, 153); /* peach */
+}
+
+.clr29 {
+    background-color: rgb(0, 51, 0); /* dark green */
+}
+
+.clr30 {
+    background-color: rgb(153, 51, 102); /* plum */
+}
+
+

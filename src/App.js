@@ -7,6 +7,7 @@ import CreateGroup from './components/CreateGroup';
 import Users from './components/Users';
 import ChatArea from './components/ChatArea';
 import Groups from './components/Groups';
+import { useDispatch, useSelector } from 'react-redux';
 
 
 
@@ -14,8 +15,10 @@ import Groups from './components/Groups';
 import { BrowserRouter, Routes, Route } from 'react-router-dom';
 
 function App() {
+  const theme = useSelector((state)=>state.themeKey);
+  
   return (
-    <div className="App">
+    <div className={"App " + ((theme)?"":'darkeres')}>
       
 
         <Routes>

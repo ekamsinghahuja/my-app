@@ -11,6 +11,8 @@ import { useNavigate } from 'react-router-dom';
 import LightModeIcon from '@mui/icons-material/LightMode';
 import { useDispatch, useSelector } from 'react-redux';
 import { toggleTheme } from '../freatures/themeSlice';
+import LogoutIcon from '@mui/icons-material/Logout';
+import { useHistory } from 'react-router-dom';
 
 const Sidebar = () => {
 
@@ -22,6 +24,16 @@ const Sidebar = () => {
     const theme = useSelector((state)=>state.themeKey);
     const navigate = useNavigate();
     const dispatch = useDispatch();
+    
+
+    const handleLogout = () => {
+        
+        localStorage.clear();
+
+      
+        navigate('/');
+    };
+
 
     
   return (
@@ -44,6 +56,7 @@ const Sidebar = () => {
                 <IconButton onClick={() =>{dispatch(toggleTheme())}}>
                     {theme ? <NightlightIcon /> : <LightModeIcon className={((theme)?"":'dark')}/>}
                 </IconButton>
+                <IconButton onClick={handleLogout}> <LogoutIcon className={((theme)?"":'dark')}/></IconButton>
             </div>
            
         </div>
