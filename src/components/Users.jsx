@@ -16,21 +16,33 @@ const Users = () => {
     useEffect(() => {
         const load_all_user = async () => {
             try {
+                const token = JSON.parse(localStorage.getItem('token'));
+                console.log(token);
+                if (!token) {
+                    console.error("No token found. User not authenticated.");
+                    return;
+                }
+        
                 const config = {
                     headers: {
-                        "Content-type": "application/json",
-                    },
+                        "Content-Type": "application/json",
+                        "Authorization": `Bearer ${token}`
+                    }
                 };
+                
                 const response = await axios.post(
                     "http://localhost:3000/user/all_user",
+                    {}, // Empty data object if no payload is needed
                     config
                 );
+        
                 console.log("Response data:", response.data);
                 set_all_users(response.data.message);
             } catch (error) {
                 console.error("Error fetching users:", error);
             }
         };
+        
 
         load_all_user().then(() => {console.log("helo");return;});
     }, []);

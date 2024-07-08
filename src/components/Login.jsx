@@ -39,6 +39,7 @@ const Auth = () => {
         setStatusMessage("Login successful");
         navigate('/app/welcome');
         localStorage.setItem("userData", JSON.stringify(response.data));
+        localStorage.setItem("token", JSON.stringify(response.data.token));
         setLoading(false);
       }
       else{
@@ -73,6 +74,7 @@ const Auth = () => {
         setStatusMessage("Registration successful");
         navigate('/app/welcome');
         localStorage.setItem("userData", JSON.stringify(response.data));
+        localStorage.setItem("token", JSON.stringify(response.data.token));
       }
       else{
         console.log(response.data);
