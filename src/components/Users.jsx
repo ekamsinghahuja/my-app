@@ -13,45 +13,75 @@ import { AnimatePresence } from "framer-motion"
 const Users = () => {
     const theme = useSelector((state)=>state.themeKey);
     const [all_users,set_all_users] = useState([]);
-    useEffect(() => {
-        const load_all_user = async () => {
-            try {
-                const token = JSON.parse(localStorage.getItem('token'));
-                console.log(token);
-                if (!token) {
-                    console.error("No token found. User not authenticated.");
-                    return;
-                }
-        
-                const config = {
-                    headers: {
-                        "Content-Type": "application/json",
-                        "Authorization": `Bearer ${token}`
-                    }
-                };
-                
-                const response = await axios.post(
-                    "http://localhost:3000/user/all_user",
-                    {}, // Empty data object if no payload is needed
-                    config
-                );
-        
-                console.log("Response data:", response.data);
-                set_all_users(response.data.message);
-            } catch (error) {
-                console.error("Error fetching users:", error);
-            }
-        };
-        
+    const dispatch = useDispatch();
 
-        load_all_user().then(() => {console.log("helo");return;});
+    const load_all_user = async () => {
+        try {
+            const token = JSON.parse(localStorage.getItem('token'));
+            console.log(token);
+            if (!token) {
+                console.error("No token found. User not authenticated.");
+                return;
+            }
+    
+            const config = {
+                headers: {
+                    "Content-Type": "application/json",
+                    "Authorization": `Bearer ${token}`
+                }
+            };
+            
+            const response = await axios.post(
+                "http://localhost:3000/user/all_user",
+                {}, // Empty data object if no payload is needed
+                config
+            );
+    
+            console.log("Response data:", response.data);
+            set_all_users(response.data.message);
+        } catch (error) {
+            console.error("Error fetching users:", error);
+        }
+    };
+    const initiateChat = async(user)=>{
+        try{
+            const token = JSON.parse(localStorage.getItem('token'));
+            console.log(token);
+            if (!token) {
+                console.error("No token found. User not authenticated.");
+                return;
+            }
+            const config = {
+                headers: {
+                    "Content-Type": "application/json",
+                    "Authorization": `Bearer ${token}`
+                }
+            };
+            const response = await axios.post(
+                "http://localhost:3000/chat/",
+                {
+                    userId:user._id
+                }, 
+                config
+            );
+            // dispatch(refreshSidebarFun());
+            
+        }
+        catch(error){
+
+        }
+    }
+    useEffect(() => {
+        load_all_user();
     }, []);
 
-    useEffect(() => {
-        // This will run after all_users has been updated
-        // console.log("Updated all_users:", all_users[0].name);
+    
+
+    // useEffect(() => {
+    //     // This will run after all_users has been updated
+    //     // console.log("Updated all_users:", all_users[0].name);
         
-    }, [all_users]);
+    // }, [all_users]);
 
 
   return (
@@ -85,7 +115,7 @@ const Users = () => {
         <div className={'ug-list ' }>
             
                 {all_users.map((user,key) => (
-                    <UserShowed key={user.id} name={user.name} email ={user.email} />
+                    <UserShowed key={key} name={user.name} email ={user.email} />
                 ))}
             
         </div>

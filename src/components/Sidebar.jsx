@@ -1,4 +1,4 @@
-import React, { useState } from 'react'
+import React, { useState , useEffect} from 'react'
 import AccountCircleIcon from '@mui/icons-material/AccountCircle';
 import PersonAddIcon from '@mui/icons-material/PersonAdd';
 import GroupAddIcon from '@mui/icons-material/GroupAdd';
@@ -13,14 +13,46 @@ import { useDispatch, useSelector } from 'react-redux';
 import { toggleTheme } from '../freatures/themeSlice';
 import LogoutIcon from '@mui/icons-material/Logout';
 import { useHistory } from 'react-router-dom';
+import axios from 'axios';
+
 
 const Sidebar = () => {
+    const [conversations, setConversations] = useState([]);
 
-    const [conversations, setConversation] = useState([
-        {name:"Title1",lastMessage:"last message1",timeStamp:"today"},
-        {name:"Title2",lastMessage:"last message2",timeStamp:"today t2"},
-        {name:"Title3",lastMessage:"last message3",timeStamp:"today t3"}
-    ]);
+    const load_all_chats = async () => {
+        try {
+            const token = JSON.parse(localStorage.getItem('token'));
+            console.log(token);
+            if (!token) {
+                console.error("No token found. User not authenticated.");
+                return;
+            }
+    
+            const config = {
+                headers: {
+                    "Content-Type": "application/json",
+                    "Authorization": `Bearer ${token}`
+                }
+            };
+            
+            const response = await axios.get(
+                "http://localhost:3000/chat/",
+                config
+            );
+    
+            console.log("Response data:", response.data);
+            setConversations(response.data.message); 
+        } catch (error) {
+            console.error("Error fetching chats:", error);
+        }
+    };
+
+    useEffect(() => {
+        console.log(JSON.parse(localStorage.getItem('token')));
+        load_all_chats();
+    }, []);
+
+    
     const theme = useSelector((state)=>state.themeKey);
     const navigate = useNavigate();
     const dispatch = useDispatch();
@@ -65,12 +97,7 @@ const Sidebar = () => {
             <input placeholder='Search' className={'searchbox ' + ((theme)?"":'dark')}/>
         </div>
         <div className={'sb-conversations ' + ((theme)?"":'dark')}>
-            {conversations.map((conversation)=>{
-                return (<ConversationItem 
-                props ={conversation} 
-                key={conversation.name}
-                className={((theme)?"":'dark')}
-                />);
+            {conversations && conversations.map((conversation)=>{return (<ConversationItem props ={conversation}  key={conversation.name} className={((theme)?"":'dark')} />);
             })}
         </div>
     </div>
