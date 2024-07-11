@@ -43,45 +43,11 @@ const Users = () => {
             console.error("Error fetching users:", error);
         }
     };
-    const initiateChat = async(user)=>{
-        try{
-            const token = JSON.parse(localStorage.getItem('token'));
-            console.log(token);
-            if (!token) {
-                console.error("No token found. User not authenticated.");
-                return;
-            }
-            const config = {
-                headers: {
-                    "Content-Type": "application/json",
-                    "Authorization": `Bearer ${token}`
-                }
-            };
-            const response = await axios.post(
-                "http://localhost:3000/chat/",
-                {
-                    userId:user._id
-                }, 
-                config
-            );
-            // dispatch(refreshSidebarFun());
-            
-        }
-        catch(error){
-
-        }
-    }
+    
     useEffect(() => {
         load_all_user();
     }, []);
 
-    
-
-    // useEffect(() => {
-    //     // This will run after all_users has been updated
-    //     // console.log("Updated all_users:", all_users[0].name);
-        
-    // }, [all_users]);
 
 
   return (
@@ -115,7 +81,7 @@ const Users = () => {
         <div className={'ug-list ' }>
             
                 {all_users.map((user,key) => (
-                    <UserShowed key={key} name={user.name} email ={user.email} />
+                    <UserShowed key={key} user={user} name={user.name} email ={user.email} />
                 ))}
             
         </div>

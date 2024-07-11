@@ -16,7 +16,9 @@ import { useHistory } from 'react-router-dom';
 import axios from 'axios';
 
 
+
 const Sidebar = () => {
+    
     const [conversations, setConversations] = useState([]);
 
     const load_all_chats = async () => {
@@ -39,16 +41,15 @@ const Sidebar = () => {
                 "http://localhost:3000/chat/",
                 config
             );
-    
-            console.log("Response data:", response.data);
-            setConversations(response.data.message); 
+            const usersList = response.data.map(item => item.users[0]);
+            console.log("Response data: of siebar call",response.data);
+            setConversations(usersList); 
         } catch (error) {
             console.error("Error fetching chats:", error);
         }
     };
 
     useEffect(() => {
-        console.log(JSON.parse(localStorage.getItem('token')));
         load_all_chats();
     }, []);
 
@@ -97,8 +98,9 @@ const Sidebar = () => {
             <input placeholder='Search' className={'searchbox ' + ((theme)?"":'dark')}/>
         </div>
         <div className={'sb-conversations ' + ((theme)?"":'dark')}>
-            {conversations && conversations.map((conversation)=>{return (<ConversationItem props ={conversation}  key={conversation.name} className={((theme)?"":'dark')} />);
-            })}
+            {conversations ? (conversations.map((conversation)=>{return (<ConversationItem props ={conversation}  key={conversation.name} className={((theme)?"":'dark')} />)}))
+            :<>halo</>
+            }
         </div>
     </div>
   )
