@@ -41,8 +41,14 @@ const Sidebar = () => {
                 "http://localhost:3000/chat/",
                 config
             );
-            const usersList = response.data.map(item => item.users[0]);
-            console.log("Response data: of siebar call",response.data);
+            const usersList = response.data.map(item => {
+                const user = item.users[0];
+                user.chatId = item._id;
+                user.chatName = item.chatName;
+                return user;
+            });
+            console.log("Response data: of siebar call",usersList);
+            
             setConversations(usersList); 
         } catch (error) {
             console.error("Error fetching chats:", error);
@@ -98,7 +104,7 @@ const Sidebar = () => {
             <input placeholder='Search' className={'searchbox ' + ((theme)?"":'dark')}/>
         </div>
         <div className={'sb-conversations ' + ((theme)?"":'dark')}>
-            {conversations ? (conversations.map((conversation)=>{return (<ConversationItem props ={conversation}  key={conversation.name} className={((theme)?"":'dark')} />)}))
+            {conversations ? (conversations.map((conversation)=>{return (<ConversationItem props = {conversation} chatName ={conversation.name} conv_id={conversation.chatId}  key={conversation.name} className={((theme)?"":'dark')} />)}))
             :<>halo</>
             }
         </div>

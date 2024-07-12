@@ -7,19 +7,25 @@ import MessageSelf from './MessageSelf';
 import { useNavigate } from 'react-router-dom';
 import { useDispatch, useSelector } from 'react-redux';
 import { toggleTheme } from '../freatures/themeSlice';
+import { useLocation } from 'react-router-dom';
+import Conicon from './Conicon';
+
 
 
 const ChatArea = () => {
   const theme = useSelector((state)=>state.themeKey);
   const [chat,setchat] = useState({name:"Title1",lastMessage:"last message1",timeStamp:"today"})
-
+  const location = useLocation();
+  const currentURL = location.pathname;
+  const chatId = currentURL.split('/').pop().split('&')[0];
+  const chatName = currentURL.split('/').pop().split('&')[1];
   
   return (
     <div className='chatArea-container'>
       <div className={'chatArea-header '+((theme)?"":'dark')}>
-        <p className={"con-icon " + ((theme)?"":'dark')}>{chat.name[0]}</p>
+        <Conicon name={chatName}/>
         <div className={'header-text ' + ((theme)?"":'dark')}>
-            <p className={'con-title ' +((theme)?"":'dark')}>{chat.name}</p>
+            <p className={'con-title ' +((theme)?"":'dark')}>{chatName}</p>
             <p className={'con-timeStamp2 '+((theme)?"":'dark')}>{chat.timeStamp}</p>
         </div>
         <IconButton className={((theme)?"":'dark')}>
