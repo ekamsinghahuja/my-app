@@ -13,6 +13,7 @@ import { useDispatch, useSelector } from 'react-redux';
 
 
 import { BrowserRouter, Routes, Route } from 'react-router-dom';
+import SelectUsers from "./components/SelectUsers";
 
 function App() {
   const theme = useSelector((state)=>state.themeKey);
@@ -29,6 +30,7 @@ function App() {
             <Route path="create_group" element={<CreateGroup />} />
             <Route path="users" element={<Users />} />
             <Route path="groups" element={<Groups />} />
+            <Route path="select-users" element={<SelectUsers />} />
             
 
           </Route>

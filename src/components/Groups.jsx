@@ -1,13 +1,46 @@
-import React from 'react'
+import React, { useEffect, useState } from 'react'
 import logo from "../Assets/logoo-removebg-preview.png"
 import SearchIcon from '@mui/icons-material/Search';
 import { IconButton } from '@mui/material';
 import { useSelector } from 'react-redux';
 import { motion } from "framer-motion"
 import { AnimatePresence } from "framer-motion"
+import axios from 'axios';
+import GroupsShowed from './GroupsShowed';
 
 const Groups = () => {
     const theme = useSelector((state)=>state.themeKey);
+    const [user_grp,setGroup] = useState([]) 
+    const fetch_groups = async () => {
+        console.log("called");
+        const token = JSON.parse(localStorage.getItem('token'));
+        if (!token) {
+            console.error("No token found. User not authenticated.");
+            return;
+        }
+    
+        const config = {
+            headers: {
+                "Content-Type": "application/json",
+                "Authorization": `Bearer ${token}`
+            }
+        };
+    
+        try {
+            const response = await axios.get(
+                "http://localhost:3000/chat/fetchGroups",
+                config
+            );
+            console.log("Response: of fetchGroups", response.data);
+            setGroup(response.data);
+        } catch (error) {
+            console.error("Error fetching groups:", error);
+        }
+    }
+    useEffect(()=>{
+        fetch_groups();
+    },[])
+
   return (
     <AnimatePresence>
     <motion.div
@@ -25,63 +58,20 @@ const Groups = () => {
             src={logo}
             style={{height:"4rem",width:"4rem"}}
             />
-            <p className={'ug-title '+ ((theme)?"":'dark')}>Online Users</p>
+            <p className={'ug-title '+ ((theme)?"":'dark')}>Groups</p>
         </div>
         <div className={'sb-search ' + ((theme)?"":'dark')}>
             <SearchIcon />
             <input placeholder='Search' className={'searchbox ' + ((theme)?"":'dark')}/>
         </div>
-        <div className={'ug-list ' }>
-            <motion.div whileHover={{scale:1.03}} whileTap={{scale:0.98}} className={'list-tem ' + ((theme)?"":'dark')}>
-                <p className={'con-icon '+ ((theme)?"":'dark')}>T</p>
-                <p className={'con-title '+ ((theme)?"":'dark')}>Test-User</p>
-            </motion.div>
-            <motion.div whileHover={{scale:1.03}} whileTap={{scale:0.98}} className={'list-tem ' + ((theme)?"":'dark')}>
-                <p className={'con-icon '+ ((theme)?"":'dark')}>T</p>
-                <p className={'con-title '+ ((theme)?"":'dark')}>Test-User</p>
-            </motion.div>
-            <motion.div whileHover={{scale:1.03}} whileTap={{scale:0.98}} className={'list-tem ' + ((theme)?"":'dark')}>
-                <p className={'con-icon '+ ((theme)?"":'dark')}>T</p>
-                <p className={'con-title '+ ((theme)?"":'dark')}>Test-User</p>
-            </motion.div>
-            <motion.div whileHover={{scale:1.03}} whileTap={{scale:0.98}} className={'list-tem ' + ((theme)?"":'dark')}>
-                <p className={'con-icon '+ ((theme)?"":'dark')}>T</p>
-                <p className={'con-title '+ ((theme)?"":'dark')}>Test-User</p>
-            </motion.div>
-            <motion.div whileHover={{scale:1.03}} whileTap={{scale:0.98}} className={'list-tem ' + ((theme)?"":'dark')}>
-                <p className={'con-icon '+ ((theme)?"":'dark')}>T</p>
-                <p className={'con-title '+ ((theme)?"":'dark')}>Test-User</p>
-            </motion.div>
-            <motion.div whileHover={{scale:1.03}} whileTap={{scale:0.98}} className={'list-tem ' + ((theme)?"":'dark')}>
-                <p className={'con-icon '+ ((theme)?"":'dark')}>T</p>
-                <p className={'con-title '+ ((theme)?"":'dark')}>Test-User</p>
-            </motion.div>
-            <motion.div whileHover={{scale:1.03}} whileTap={{scale:0.98}} className={'list-tem ' + ((theme)?"":'dark')}>
-                <p className={'con-icon '+ ((theme)?"":'dark')}>T</p>
-                <p className={'con-title '+ ((theme)?"":'dark')}>Test-User</p>
-            </motion.div>
-            <motion.div whileHover={{scale:1.03}} whileTap={{scale:0.98}} className={'list-tem ' + ((theme)?"":'dark')}>
-                <p className={'con-icon '+ ((theme)?"":'dark')}>T</p>
-                <p className={'con-title '+ ((theme)?"":'dark')}>Test-User</p>
-            </motion.div>
-            <motion.div whileHover={{scale:1.03}} whileTap={{scale:0.98}} className={'list-tem ' + ((theme)?"":'dark')}>
-                <p className={'con-icon '+ ((theme)?"":'dark')}>T</p>
-                <p className={'con-title '+ ((theme)?"":'dark')}>Test-User</p>
-            </motion.div>
-            <motion.div whileHover={{scale:1.03}} whileTap={{scale:0.98}} className={'list-tem ' + ((theme)?"":'dark')}>
-                <p className={'con-icon '+ ((theme)?"":'dark')}>T</p>
-                <p className={'con-title '+ ((theme)?"":'dark')}>Test-User</p>
-            </motion.div>
-            <motion.div whileHover={{scale:1.03}} whileTap={{scale:0.98}} className={'list-tem ' + ((theme)?"":'dark')}>
-                <p className={'con-icon '+ ((theme)?"":'dark')}>T</p>
-                <p className={'con-title '+ ((theme)?"":'dark')}>Test-User</p>
-            </motion.div>
-            <motion.div whileHover={{scale:1.03}} whileTap={{scale:0.98}} className={'list-tem ' + ((theme)?"":'dark')}>
-                <p className={'con-icon '+ ((theme)?"":'dark')}>T</p>
-                <p className={'con-title '+ ((theme)?"":'dark')}>Test-User</p>
-            </motion.div>
-            
-            
+        <div className={'ug-list'}>
+            {user_grp.length > 0 ? (
+                user_grp.map((item) => (
+                    <GroupsShowed key={item._id} grp={item} />
+                ))
+            ) : (
+                <></>
+            )}
         </div>
     </motion.div>
     </AnimatePresence>

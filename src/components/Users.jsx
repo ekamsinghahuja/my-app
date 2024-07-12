@@ -70,7 +70,7 @@ const Users = () => {
             src={logo}
             style={{height:"4rem",width:"4rem"}}
             />
-            <p className={'ug-title '+ ((theme)?"":'dark')}>Online Users</p>
+            <h1 className={'ug-title '+ ((theme)?"":'dark')}>Online Users</h1>
         </div>
         <div className={'sb-search ' + ((theme)?"":'dark')}>
             <SearchIcon />
