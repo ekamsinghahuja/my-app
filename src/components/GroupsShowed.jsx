@@ -11,7 +11,6 @@ const GroupsShowed = ({grp}) => {
     <div>
          <motion.div whileHover={{scale:1.03}} whileTap={{scale:0.98}} className={'list-tem ' + ((theme)?"":'dark')}>
                 <Conicon name = {grp.chatName}/>
-                
                 <p className={'con-title '+ ((theme)?"":'dark')}>{grp.chatName}</p>
 
             </motion.div>
