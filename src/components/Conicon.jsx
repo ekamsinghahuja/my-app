@@ -1,7 +1,9 @@
-import React, { useState } from 'react';
+import React, { useState, useContext, useEffect } from 'react';
+import { Global_Context } from '../Context/GlobalContext';
 
 const Conicon = ({ name }) => {
-  const [currentClassIndex, setCurrentClassIndex] = useState(0);
+  const { currentClassIndex,setCurrentClassIndex } = useContext(Global_Context);
+  
 
   const classes = [
     'clr1', 'clr2', 'clr3', 'clr4', 'clr5', 'clr6', 'clr7',
@@ -17,6 +19,7 @@ const Conicon = ({ name }) => {
     setCurrentClassIndex(nextIndex);
     return classes[nextIndex];
   };
+  
 
   // Get the current class for this render
   const currentClass = classes[currentClassIndex];

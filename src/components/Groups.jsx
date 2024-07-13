@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from 'react'
+import React, { useContext, useEffect, useState } from 'react'
 import logo from "../Assets/logoo-removebg-preview.png"
 import SearchIcon from '@mui/icons-material/Search';
 import { IconButton } from '@mui/material';
@@ -7,31 +7,24 @@ import { motion } from "framer-motion"
 import { AnimatePresence } from "framer-motion"
 import axios from 'axios';
 import GroupsShowed from './GroupsShowed';
+import { Global_Context } from '../Context/GlobalContext';
 
 const Groups = () => {
     const theme = useSelector((state)=>state.themeKey);
     const [user_grp,setGroup] = useState([]) 
+    const {api_url,config,token} = useContext(Global_Context);
+    
     const fetch_groups = async () => {
-        console.log("called");
-        const token = JSON.parse(localStorage.getItem('token'));
+       
         if (!token) {
             console.error("No token found. User not authenticated.");
             return;
         }
-    
-        const config = {
-            headers: {
-                "Content-Type": "application/json",
-                "Authorization": `Bearer ${token}`
-            }
-        };
-    
         try {
             const response = await axios.get(
-                "http://localhost:3000/chat/fetchGroups",
+                api_url+"chat/fetchGroups",
                 config
             );
-            console.log("Response: of fetchGroups", response.data);
             setGroup(response.data);
         } catch (error) {
             console.error("Error fetching groups:", error);

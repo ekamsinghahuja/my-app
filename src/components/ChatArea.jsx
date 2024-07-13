@@ -1,7 +1,7 @@
 import { IconButton } from '@mui/material'
 import DeleteIcon from '@mui/icons-material/Delete';
 import SendIcon from '@mui/icons-material/Send';
-import React, { useEffect, useState } from 'react'
+import React, { useEffect, useState,useContext} from 'react'
 import MessageOthers from './MessageOthers';
 import MessageSelf from './MessageSelf';
 import { useNavigate } from 'react-router-dom';
@@ -10,14 +10,14 @@ import { toggleTheme } from '../freatures/themeSlice';
 import { useLocation } from 'react-router-dom';
 import Conicon from './Conicon';
 import axios from 'axios';
+import { Global_Context } from '../Context/GlobalContext';
 
 
 
 const ChatArea = () => {
   const theme = useSelector((state)=>state.themeKey);
   const [chat,setchat] = useState({name:"Title1",lastMessage:"last message1",timeStamp:"today"})
-  const [messages,setMessages] = useState([]);
-  const [refresh, setRefresh] = useState(false);
+ 
   const [messagesContent,setMessagesContent] = useState("");
   const location = useLocation();
   const currentURL = location.pathname;
@@ -26,66 +26,27 @@ const ChatArea = () => {
   const userData = JSON.parse(localStorage.getItem("userData"));
   
 
-  const fetchMessages = async () => {
-    const token = JSON.parse(localStorage.getItem('token'));
-    const ss = "http://localhost:3000/messages/";
-    console.log(ss);
-
-
-    if (!token) {
-      console.error("No token found. User not authenticated.");
-      return;
-    }
-
-    const config = {
-      headers: {
-        "Content-Type": "application/json",
-        "Authorization": `Bearer ${token}`
-      }
-    };
-
-    try {
-      const response = await axios.get(`http://localhost:3000/messages/${chatId}`, config);
-      
-      const transformedData = response.data.map(item => ({
-        sender_id: item.sender._id,
-        sender_name:item.sender.name,
-        message_content:item.content
-      }));
-      console.log("messagesloaded", transformedData);
-      setMessages(transformedData);
-    } catch (error) {
-      console.error("Error fetching messages:", error);
-    }
-  };
+  const { messages, setMessages,fetchMessages,api_url,token,config} = useContext(Global_Context);
   useEffect(()=>{
-    console.log('user:',userData.id)
-    fetchMessages()
+    
+    fetchMessages(chatId);
   },[])
   const sendMessage = async() => {
     if(messagesContent.length>0){
-      const token = JSON.parse(localStorage.getItem('token'));
       if (!token) {
         console.error("No token found. User not authenticated.");
         return;
       }
-      const config = {
-        headers: {
-          "Content-Type": "application/json",
-          "Authorization": `Bearer ${token}`
-        }
-      };
       try {
         const response = await axios
         .post(
-          'http://localhost:3000/messages/', 
+          api_url+'messages/', 
           {
             content:messagesContent,
             chatId:chatId
           },
           config);
           console.log("sentMessage",response);
-        
       } catch (error) {
         console.error("Error fetching messages:", error);
       }
@@ -111,8 +72,6 @@ const ChatArea = () => {
       </div>
       <div className={'message-container ' + ((theme)?"":'dark')}>
         
-        {/* <MessageOthers />
-        <MessageSelf/> */}
         {messages.map((item,index) =>{
            if(item.sender_id == userData.id){
               return  <MessageSelf key={index} item={item} />
@@ -123,9 +82,6 @@ const ChatArea = () => {
            }
         })}
       
-          {/* {messages.map((item) => (
-           
-          ))} */}
         </div>
       <div className={'text-input-area '+((theme)?"":'dark')}>
         <input 

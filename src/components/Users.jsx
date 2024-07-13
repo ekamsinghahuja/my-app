@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from 'react'
+import React, { useContext, useEffect, useState } from 'react'
 import logo from "../Assets/logoo-removebg-preview.png"
 import SearchIcon from '@mui/icons-material/Search';
 import { IconButton } from '@mui/material';
@@ -8,46 +8,12 @@ import axios from 'axios';
 import UserShowed from './UserShowed';
 import { motion } from "framer-motion"
 import { AnimatePresence } from "framer-motion"
+import { Global_Context } from '../Context/GlobalContext';
 
 
 const Users = () => {
+    const { all_users,set_all_users,load_all_user} = useContext(Global_Context);
     const theme = useSelector((state)=>state.themeKey);
-    const [all_users,set_all_users] = useState([]);
-    const dispatch = useDispatch();
-
-    const load_all_user = async () => {
-        try {
-            const token = JSON.parse(localStorage.getItem('token'));
-            console.log(token);
-            if (!token) {
-                console.error("No token found. User not authenticated.");
-                return;
-            }
-    
-            const config = {
-                headers: {
-                    "Content-Type": "application/json",
-                    "Authorization": `Bearer ${token}`
-                }
-            };
-            
-            const response = await axios.post(
-                "http://localhost:3000/user/all_user",
-                {}, // Empty data object if no payload is needed
-                config
-            );
-    
-            console.log("Response data:", response.data);
-            set_all_users(response.data.message);
-        } catch (error) {
-            console.error("Error fetching users:", error);
-        }
-    };
-    
-    useEffect(() => {
-        load_all_user();
-    }, []);
-
 
 
   return (

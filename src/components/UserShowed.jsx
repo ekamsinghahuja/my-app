@@ -7,12 +7,6 @@ import { Global_Context } from '../Context/GlobalContext';
 const UserShowed = (props) => {
     const theme = useSelector((state)=>state.themeKey);
     const {refresh,initiateChat} = useContext(Global_Context);
-    
-    
-
-
-
-   
   return (
     <div onClick={
         ()=>{

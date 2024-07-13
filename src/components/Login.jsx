@@ -1,14 +1,19 @@
-import React, { useState } from 'react';
+import React, { useContext, useState } from 'react';
 import logo from "../Assets/logoo-removebg-preview.png";
 import { Button, TextField, CircularProgress, Backdrop } from '@mui/material';
 import axios from 'axios';
 import { useNavigate } from 'react-router-dom';
+import { Global_Context } from '../Context/GlobalContext';
+
+
 
 const Auth = () => {
   const [isLogin, setIsLogin] = useState(true);
   const [data, setData] = useState({ name: "", email: "", password: "" });
   const [loading, setLoading] = useState(false);
   const [statusMessage, setStatusMessage] = useState("");
+  const {api_url,config,} = useContext(Global_Context);
+  
 
   const changeHandler = (e) => {
     setData({ ...data, [e.target.name]: e.target.value });
@@ -24,16 +29,7 @@ const Auth = () => {
   const loginHandler = async () => {
     setLoading(true);
     try {
-      const config = {
-        headers: {
-          "Content-type": "application/json",
-        },
-      };
-      const response = await axios.post(
-        "http://localhost:3000/user/login",
-        { email: data.email, password: data.password },
-        config
-      );
+      const response = await axios.post(api_url+"user/login",{ email: data.email, password: data.password },config);
       console.log(response.data.success);
       if(response.data.success){
         setStatusMessage("Login successful");
@@ -47,8 +43,8 @@ const Auth = () => {
         setStatusMessage(response.data.message);
         setLoading(false);
       }
-     
-    } catch (err) {
+    } 
+    catch (err) {
       console.error(err); 
       setStatusMessage("Something Went Wrong");
       setLoading(false);
@@ -59,16 +55,8 @@ const Auth = () => {
    
     setLoading(true);
     try {
-      const config = {
-        headers: {
-          "Content-type": "application/json",
-        },
-      };
-      const response = await axios.post(
-        "http://localhost:3000/user/register",
-        data,
-        config
-      );
+      
+      const response = await axios.post(api_url+"user/register",data,config);
       if(response.data.success){
         console.log(response);
         setStatusMessage("Registration successful");

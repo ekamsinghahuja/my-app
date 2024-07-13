@@ -21,59 +21,14 @@ import { Global_Context } from '../Context/GlobalContext';
 
 const Sidebar = () => {
     const { conversations, load_all_chats, refresh } = useContext(Global_Context);
-    
-    // const [conversations, setConversations] = useState([]);
 
-    // const load_all_chats = async () => {
-    //     try {
-    //         const token = JSON.parse(localStorage.getItem('token'));
-    //         console.log(token);
-    //         if (!token) {
-    //             console.error("No token found. User not authenticated.");
-    //             return;
-    //         }
-    
-    //         const config = {
-    //             headers: {
-    //                 "Content-Type": "application/json",
-    //                 "Authorization": `Bearer ${token}`
-    //             }
-    //         };
-            
-    //         const response = await axios.get(
-    //             "http://localhost:3000/chat/",
-    //             config
-    //         );
-    //         const usersList = response.data.map(item => {
-    //             const user = item.users[0];
-    //             user.chatId = item._id;
-    //             user.chatName = item.chatName;
-    //             return user;
-    //         });
-    //         console.log("Response data: of siebar call",usersList);
-            
-    //         setConversations(usersList); 
-    //     } catch (error) {
-    //         console.error("Error fetching chats:", error);
-    //     }
-    // };
-
-    // useEffect(() => {
-    //     load_all_chats();
-    // }, []);
-    
-
-    
     const theme = useSelector((state)=>state.themeKey);
     const navigate = useNavigate();
     const dispatch = useDispatch();
     
 
     const handleLogout = () => {
-        
         localStorage.clear();
-
-      
         navigate('/');
     };
 
