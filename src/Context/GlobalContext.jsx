@@ -1,6 +1,7 @@
 import React, { createContext, useState, useEffect } from 'react';
 import axios from 'axios';
 import { useNavigate } from 'react-router-dom';
+import { Socket } from 'socket.io-client';
 
 export const Global_Context = createContext(null);
 
@@ -89,9 +90,11 @@ const GlobalContext = (props) => {
           const transformedData = response.data.map(item => ({
             sender_id: item.sender._id,
             sender_name:item.sender.name,
-            message_content:item.content
+            message_content:item.content,
+            _id:item._id
           }));
-          console.log()
+         
+      
           setMessages(transformedData);
         } 
         catch (error) {
@@ -139,7 +142,8 @@ const GlobalContext = (props) => {
     token,
     config,
     currentClassIndex,
-    setCurrentClassIndex
+    setCurrentClassIndex,
+    userData
     
   };
 
