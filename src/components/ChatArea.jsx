@@ -27,7 +27,7 @@ const ChatArea = () => {
   const chatName = currentURL.split('/').pop().split('&')[1];
   const [socketConnectionStatus, setSocketConnectionStatus] = useState(false);
 
-  const { messages, setMessages, fetchMessages, api_url, token, config, userData } = useContext(Global_Context);
+  const { messages, setMessages, fetchMessages, api_url, token, config, userData,refresh } = useContext(Global_Context);
 
   const sendMessage = async () => {
     var data = null;
@@ -52,6 +52,7 @@ const ChatArea = () => {
         console.error("Error sending message:", error);
       }
       setMessagesContent("");
+      refresh();
     }
   };
 
@@ -105,6 +106,14 @@ const ChatArea = () => {
           type="text"
           value={messagesContent}
           onChange={(e) => setMessagesContent(e.target.value)}
+          onKeyDown={(event) => {
+            if (event.key === 'Enter') {
+              event.preventDefault(); 
+              sendMessage();
+              
+
+            }
+          }}
           placeholder='Type a Message'
           className={'searchbox ' + ((theme) ? "" : 'dark')}
         />

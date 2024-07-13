@@ -21,7 +21,7 @@ const ConversationItem = ({props}) => {
       
       <Conicon name={props.name}/>
       <p className={"con-title "+((theme)?"":'dark')}>{props.name}</p>
-      <p className={"con-lastMessage "+((theme)?"":'dark')}>{props.chatId}</p>
+      <p className={"con-lastMessage "+((theme)?"":'dark')}>{props.latestMessage}</p>
       <p className={"con-timeStamp "+((theme)?"":'dark')}>{props.timeStamp}</p>
       </motion.div>
     </div>
