@@ -9,6 +9,16 @@ const Welcom = () => {
   const theme = useSelector((state)=>state.themeKey);
   const navigate = useNavigate();
   const userData = JSON.parse(localStorage.getItem("userData"));
+  useEffect(() => {
+    if (!userData) {
+      console.log('User not authenticated');
+      navigate("/");
+    }
+    else{
+      console.log(userData);
+    }
+  }, [userData, navigate]);
+  
   function sentenceCase(str) {
     if ((str === null) || (str === ''))
         return false;
@@ -22,15 +32,7 @@ const Welcom = () => {
         });
   }
 
-  useEffect(() => {
-    if (!userData) {
-      console.log('User not authenticated');
-      navigate("/");
-    }
-    else{
-      console.log(userData);
-    }
-  }, [userData, navigate]);
+  
 
   return (
     <div className='welcom-container'>

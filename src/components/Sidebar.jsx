@@ -1,4 +1,5 @@
 import React, { useState , useEffect} from 'react'
+import { useContext } from 'react';
 import AccountCircleIcon from '@mui/icons-material/AccountCircle';
 import PersonAddIcon from '@mui/icons-material/PersonAdd';
 import GroupAddIcon from '@mui/icons-material/GroupAdd';
@@ -14,50 +15,53 @@ import { toggleTheme } from '../freatures/themeSlice';
 import LogoutIcon from '@mui/icons-material/Logout';
 import { useHistory } from 'react-router-dom';
 import axios from 'axios';
+import { Global_Context } from '../Context/GlobalContext';
 
 
 
 const Sidebar = () => {
+    const { conversations, load_all_chats, refresh } = useContext(Global_Context);
     
-    const [conversations, setConversations] = useState([]);
+    // const [conversations, setConversations] = useState([]);
 
-    const load_all_chats = async () => {
-        try {
-            const token = JSON.parse(localStorage.getItem('token'));
-            console.log(token);
-            if (!token) {
-                console.error("No token found. User not authenticated.");
-                return;
-            }
+    // const load_all_chats = async () => {
+    //     try {
+    //         const token = JSON.parse(localStorage.getItem('token'));
+    //         console.log(token);
+    //         if (!token) {
+    //             console.error("No token found. User not authenticated.");
+    //             return;
+    //         }
     
-            const config = {
-                headers: {
-                    "Content-Type": "application/json",
-                    "Authorization": `Bearer ${token}`
-                }
-            };
+    //         const config = {
+    //             headers: {
+    //                 "Content-Type": "application/json",
+    //                 "Authorization": `Bearer ${token}`
+    //             }
+    //         };
             
-            const response = await axios.get(
-                "http://localhost:3000/chat/",
-                config
-            );
-            const usersList = response.data.map(item => {
-                const user = item.users[0];
-                user.chatId = item._id;
-                user.chatName = item.chatName;
-                return user;
-            });
-            console.log("Response data: of siebar call",usersList);
+    //         const response = await axios.get(
+    //             "http://localhost:3000/chat/",
+    //             config
+    //         );
+    //         const usersList = response.data.map(item => {
+    //             const user = item.users[0];
+    //             user.chatId = item._id;
+    //             user.chatName = item.chatName;
+    //             return user;
+    //         });
+    //         console.log("Response data: of siebar call",usersList);
             
-            setConversations(usersList); 
-        } catch (error) {
-            console.error("Error fetching chats:", error);
-        }
-    };
+    //         setConversations(usersList); 
+    //     } catch (error) {
+    //         console.error("Error fetching chats:", error);
+    //     }
+    // };
 
-    useEffect(() => {
-        load_all_chats();
-    }, []);
+    // useEffect(() => {
+    //     load_all_chats();
+    // }, []);
+    
 
     
     const theme = useSelector((state)=>state.themeKey);
