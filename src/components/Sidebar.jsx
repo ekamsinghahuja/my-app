@@ -64,7 +64,7 @@ const Sidebar = () => {
         </div>
         <div className={'sb-conversations ' + ((theme)?"":'dark')}>
             {conversations ? (conversations.map((conversation)=>{return (<ConversationItem props = {conversation} chatName ={conversation.name} conv_id={conversation.chatId}  key={conversation.name} className={((theme)?"":'dark')} />)}))
-            :<>halo</>
+            :<></>
             }
         </div>
     </div>

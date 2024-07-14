@@ -26,6 +26,8 @@ const Groups = () => {
                 config
             );
             setGroup(response.data);
+            console.log(response.data);
+            
         } catch (error) {
             console.error("Error fetching groups:", error);
         }

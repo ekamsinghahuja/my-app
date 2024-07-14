@@ -9,7 +9,7 @@ const GlobalContext = (props) => {
       const dateFromTimestamp = (timestamp) => {
         const date = new Date(timestamp);
         const year = date.getFullYear();
-        const month = String(date.getMonth() + 1).padStart(2, '0'); // Months are zero-based, so add 1
+        const month = String(date.getMonth() + 1).padStart(2, '0'); 
         const day = String(date.getDate()).padStart(2, '0');
         return `${year}-${month}-${day}`;
     };
@@ -86,7 +86,7 @@ const GlobalContext = (props) => {
         load_all_chats();
     }
 
-    //users
+    
     const initiateChat = async(user)=>{
         try{
             if (!token) {
@@ -109,10 +109,12 @@ const GlobalContext = (props) => {
         }
         try {
           const response = await axios.get(api_url+`messages/${chatId}`, config);
+          // console.log("response:",response.data)
           const transformedData = response.data.map(item => ({
             sender_id: item.sender._id,
             sender_name:item.sender.name,
             message_content:item.content,
+            time_at:item.createdAt,
             _id:item._id
           }));
           
