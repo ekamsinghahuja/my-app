@@ -14,7 +14,7 @@ import { Global_Context } from '../Context/GlobalContext';
 
 import io  from 'socket.io-client';
 
-const ENDPOINT = "http://localhost:3000";
+const ENDPOINT = "https://chat-app-bakend-kb9u.onrender.com";
 let socket;
 
 const ChatArea = () => {
