@@ -20,7 +20,7 @@ const GlobalContext = (props) => {
    
     const navigate = useNavigate();
 
-    const api_url = "http://localhost:3000/"
+    const api_url = "https://chat-app-bakend-kb9u.onrender.com/"
     const token = JSON.parse(localStorage.getItem('token'));
     const userData = JSON.parse(localStorage.getItem("userData"));
 
